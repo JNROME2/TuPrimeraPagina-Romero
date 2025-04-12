@@ -1,61 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Listado de Clientes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        th, td {
-            padding: 12px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        th {
-            background-color: #eee;
-        }
-    </style>
-</head>
-<body>
-    <h1>Listado de Clientes</h1>
+{% extends 'tienda/base.html' %}
+{% block contenido %}
+<h3>Agregar un cliente:</h3>
+  
+<form method="POST">
+    {% csrf_token %}
+    {{formulario.as_p}}
+    <button type="submit">Listo</button>
+</form>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Correo Electrónico</th>
-                <th>Teléfono</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Juan Pérez</td>
-                <td>juan.perez@email.com</td>
-                <td>+34 600 123 456</td>
-            </tr>
-            <tr>
-                <td>María López</td>
-                <td>maria.lopez@email.com</td>
-                <td>+34 611 654 321</td>
-            </tr>
-            <tr>
-                <td>Carlos García</td>
-                <td>carlos.garcia@email.com</td>
-                <td>+34 622 789 012</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html>
+{% endblock  %}
