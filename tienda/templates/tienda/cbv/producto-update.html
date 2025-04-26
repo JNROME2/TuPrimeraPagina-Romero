@@ -1,0 +1,61 @@
+{% extends 'tienda/base.html' %}
+{% block contenido %}
+<div style="background: #fef9ff; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto;">
+    <h3>Editar Producto</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="acciones-formulario">
+            <button type="submit" class="btn-guardar">💾 Guardar cambios</button>
+            <a href="{% url 'tienda:cbv-lista-producto' %}" class="btn-cancelar">↩︎ Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    form {
+        margin-top: 20px;
+    }
+
+    .acciones-formulario {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-guardar {
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-guardar:hover {
+        background-color: #6c3483;
+    }
+
+    .btn-cancelar {
+        background-color: #bbb;
+        color: white;
+        text-decoration: none;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-cancelar:hover {
+        background-color: #999;
+    }
+</style>
+{% endblock %}
+
+
+

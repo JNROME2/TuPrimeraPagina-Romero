@@ -1,10 +1,9 @@
 {% extends 'tienda/base.html' %}
 {% block contenido %}
-<h3>Agregar un producto:</h3>
-  
-<form method="POST">
-    {% csrf_token %}
-    {{formulario.as_p}}
-    <button type="submit">Listo</button>
+<div class="menu" style="margin-top: -10px; background-color: #e6e0f8;">
+    <a href="{% url 'tienda:cbv-lista-producto' %}"><i class="fas fa-list"></i> Listado de Productos</a>
+    <a href="{% url 'tienda:cbv-alta-producto' %}"><i class="fas fa-plus"></i> Agregar Producto</a>
+    
+</div>
 </form>
 {% endblock  %}

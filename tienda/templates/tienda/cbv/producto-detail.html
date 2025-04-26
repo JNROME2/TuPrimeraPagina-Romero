@@ -1,0 +1,39 @@
+{% extends 'tienda/base.html' %}
+{% block contenido %}
+<div style="background: #f4f1fb; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto;">
+    <h3>Detalles del Producto</h3>
+
+    {% if producto %}
+        <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+        <p><strong>Código:</strong> {{ producto.codigo }}</p>
+
+        <div class="acciones-producto">
+            <a href="{% url 'tienda:cbv-producto-update' producto.pk %}" class="btn-mini">📝 Editar</a>
+            <a href="{% url 'tienda:cbv-producto-delete' producto.pk %}" class="btn-mini">🗑️ Eliminar</a>
+            <a href="{% url 'tienda:cbv-lista-producto' %}" class="btn-mini">↩︎ Volver a la lista</a>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .acciones-producto {
+        margin-top: 16px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-mini {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: white;
+        background-color: #8e44ad;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-mini:hover {
+        background-color: #6c3483;
+    }
+</style>
+{% endblock %}

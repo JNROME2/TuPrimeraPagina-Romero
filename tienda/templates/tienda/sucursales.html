@@ -1,11 +1,30 @@
 {% extends 'tienda/base.html' %}
-{% block contenido %}
-<h3>Agregar una sucursal:</h3>
-  
-<form method="POST">
-    {% csrf_token %}
-    {{formulario.as_p}}
-    <button type="submit">Listo</button>
-</form>
 
-{% endblock  %}
+{% block contenido %}
+<h3 style="text-align: center; font-size: 2em; margin-bottom: 30px;">Nuestras Sucursales</h3>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+
+    <div style="background-color: #f3f0f9; padding: 20px; border-radius: 10px; width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <i class="fas fa-map-marker-alt" style="font-size: 28px; color: #8e44ad;"></i>
+        <h4 style="margin-top: 10px;">Buenos Aires</h4>
+        <p>Av. Santa Fe 1234, CABA</p>
+        <p>Lunes a Sábados, 10:00 a 19:00</p>
+    </div>
+
+    <div style="background-color: #f3f0f9; padding: 20px; border-radius: 10px; width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <i class="fas fa-map-marker-alt" style="font-size: 28px; color: #8e44ad;"></i>
+        <h4 style="margin-top: 10px;">Córdoba</h4>
+        <p>Belgrano 456, Córdoba Capital</p>
+        <p>Lunes a Viernes, 9:00 a 18:00</p>
+    </div>
+
+    <div style="background-color: #f3f0f9; padding: 20px; border-radius: 10px; width: 280px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <i class="fas fa-map-marker-alt" style="font-size: 28px; color: #8e44ad;"></i>
+        <h4 style="margin-top: 10px;">Rosario</h4>
+        <p>Oroño 789, Rosario, Santa Fe</p>
+        <p>Lunes a Sábados, 10:00 a 20:00</p>
+    </div>
+
+</div>
+{% endblock %}

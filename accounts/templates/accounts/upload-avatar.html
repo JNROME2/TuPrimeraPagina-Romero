@@ -1,0 +1,12 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+<div class="container mt-4">
+  <h2>Subir nuevo avatar</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Actualizar Avatar</button>
+  </form>
+</div>
+{% endblock %}

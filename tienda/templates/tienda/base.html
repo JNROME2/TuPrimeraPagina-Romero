@@ -30,7 +30,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        div.menu {
+        .menu {
             display: flex;
             justify-content: center;
             gap: 30px;
@@ -58,6 +58,21 @@
             transform: scale(1.05);
         }
 
+        .nav-section {
+            padding: 20px;
+            background-color: #f3f0f9;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #5e3370;
+            margin-bottom: 10px;
+        }
+
         .contenido {
             padding: 40px;
             max-width: 1000px;
@@ -72,12 +87,40 @@
 
     <h2><i class="fas fa-music"></i> INSTRUMENTOS MUSICALES</h2>
 
-    <div class="menu">
-        <a href="http://127.0.0.1:8000/tienda/inicio"><i class="fas fa-map-marker-alt"></i> Inicio</a>
-        <a href="http://127.0.0.1:8000/tienda/sucursales"><i class="fas fa-map-marker-alt"></i> Sucursales</a>
-        <a href="http://127.0.0.1:8000/tienda/clientes"><i class="fas fa-users"></i> Clientes</a>
-        <a href="http://127.0.0.1:8000/tienda/productos"><i class="fas fa-guitar"></i> Productos</a>
-        
+    {% if user.is_authenticated %}
+  <div class="user-info" style="text-align: center; padding: 15px;">
+      {% if user.avatar%}
+        {% if user.avatar.imagen %}
+        <img src="{{user.avatar.imagen.url}}" alt="Avatar" width="80" height="80" style="border-radius: 50%;">
+        {%endif%}
+      {% endif %}
+      <div class="user-details">
+          <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
+          <small>{{ user.email }}</small>
+      </div>
+  </div>
+  {% endif %}
+    {% if user.is_authenticated %}
+
+    <nav class="menu">
+        <a href="{% url 'tienda:inicio' %}"><i class="fas fa-home"></i> Inicio</a>
+        <a href="{% url 'tienda:sucursales' %}"><i class="fas fa-map-marker-alt"></i> Sucursales</a>
+        <a href="{% url 'tienda:clientes' %}"><i class="fas fa-users"></i> Clientes</a>
+        <a href="{% url 'tienda:productos' %}"><i class="fas fa-guitar"></i> Productos</a>
+        <a href="{% url 'tienda:about' %}"><i class="fas fa-guitar"></i> Acerca de mí</a>
+    </nav>
+    {% endif %}
+
+    <div class="nav-section">
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            <a href="{% url 'accounts:edit' %}"><i class="fas fa-sign-out-alt"></i> Editar datos</a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+            <a href="{% url 'accounts:signup' %}"><i class="fas fa-user-plus"></i> Registrarse</a>
+        {% endif %}
+     
     </div>
 
     <div class="contenido">

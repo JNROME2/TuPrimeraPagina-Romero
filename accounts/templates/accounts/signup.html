@@ -1,0 +1,72 @@
+{% extends 'tienda/base.html' %}
+
+{% block contenido %}
+<div style="background: #f4f1fb; padding: 30px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+    <h3 style="text-align: center; margin-bottom: 20px;">Crear una Cuenta</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label for="id_username" style="display: block; font-weight: 600; margin-bottom: 5px;">Nombre de Usuario:</label>
+            {{ form.username }}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="id_email" style="display: block; font-weight: 600; margin-bottom: 5px;">Correo Electrónico:</label>
+            {{ form.email }}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="id_password1" style="display: block; font-weight: 600; margin-bottom: 5px;">Contraseña:</label>
+            {{ form.password1 }}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="id_password2" style="display: block; font-weight: 600; margin-bottom: 5px;">Confirmar Contraseña:</label>
+            {{ form.password2 }}
+        </div>
+
+        {% if form.errors %}
+        <div style="color: #e74c3c; margin-bottom: 15px;">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div style="text-align: center;">
+            <button type="submit" style="background-color: #8e44ad; color: white; padding: 10px 20px; font-size: 1rem; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">
+                Crear Cuenta
+            </button>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <p style="font-size: 0.9rem;">¿Ya tienes una cuenta? <a href="{% url 'accounts:login' %}" style="text-decoration: none; color: #8e44ad;">Inicia sesión</a></p>
+        </div>
+    </form>
+</div>
+
+<style>
+    form {
+        margin-top: 20px;
+    }
+
+    .btn-register {
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-register:hover {
+        background-color: #6c3483;
+    }
+</style>
+{% endblock %}

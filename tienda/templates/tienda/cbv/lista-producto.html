@@ -1,0 +1,41 @@
+{% extends 'tienda/base.html' %}
+{% block contenido %}
+<ul style="list-style: none; padding: 0;">
+    {% for producto in productos %}
+    <li style="margin-bottom: 1rem; background: #f4f1fb; padding: 10px; border-radius: 8px;">
+        <strong>{{ producto.nombre }}</strong> — Código: {{ producto.codigo }}
+        <div class="acciones-producto">
+            <a href="{% url 'tienda:cbv-producto-detail' producto.pk %}" class="btn-mini">🔎 Ver</a>
+            <a href="{% url 'tienda:cbv-producto-update' producto.pk %}" class="btn-mini">📝 Editar</a>
+            <a href="{% url 'tienda:cbv-producto-delete' producto.pk %}" class="btn-mini">🗑️ Eliminar</a>
+        </div>
+    </li>
+    {% empty %}
+    <li>No hay productos registrados</li>
+    {% endfor %}
+</ul>
+
+<style>
+    .acciones-producto {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-mini {
+        padding: 4px 8px;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: white;
+        background-color: #8e44ad;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-mini:hover {
+        background-color: #6c3483;
+    }
+</style>
+{% endblock %}
+
+
