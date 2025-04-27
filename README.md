@@ -10,3 +10,6 @@
 9. En la sección Acerca de mí se podrá ver un poco de mi información personal (about)
 
 Eliminé los formularios de la sección CLIENTES y SUCURSALES colocando datos ficticios en la vista. Esto lo hice para darle una mejor funcionalidad a la página y que no se haga tan compleja. 
+
+El video va estar disponible en el siguiente link
+https://drive.google.com/drive/folders/1aoj3OauMh0M7wFa4hoxxFfF2nsLKcR4g
